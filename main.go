@@ -5,8 +5,9 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"rulecat/pkg/utils"
 	"strconv"
+
+	"github.com/jakewnuk/rulecat/pkg/utils"
 )
 
 func main() {
