@@ -118,7 +118,7 @@ i6T i7e i8s i9t iA1 iB2 iC3
 
 ## Overwrite Rules
 - Creates overwrite rules from `stdin`
-- Accepts index value from where to start the overwritting
+- Accepts index value from where to start the overwriting
 ```
 $ cat test.tmp | rulecat overwrite
 o0T o1h o2i o3s
