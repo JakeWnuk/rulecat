@@ -1,3 +1,3 @@
-module rulecat
+module github.com/jakewnuk/rulecat
 
 go 1.20
