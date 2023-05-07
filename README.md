@@ -10,7 +10,7 @@ Rulecat (`cat` rule) performs 5 unique functions:
 - Creates prepend rules from `stdin`
     - Normal prepend
     - Remove prepend (`[`)
-    - Shift then append (`{`)
+    - Shift then prepend (`{`)
 - Creates insert rules from `stdin`
     - Select starting index
 - Creates overwrite rules from `stdin`
