@@ -46,6 +46,8 @@ func main() {
 			os.Args = append(os.Args, "0")
 		}
 		toggleRules(stdIn, os.Args[2])
+	case "blank":
+		blankLines(stdIn)
 	default:
 		printUsage()
 		os.Exit(0)
@@ -64,6 +66,7 @@ func printUsage() {
 	fmt.Println("EXAMPLE: stdin | rulecat insert <START-INDEX>")
 	fmt.Println("EXAMPLE: stdin | rulecat overwrite <START-INDEX>")
 	fmt.Println("EXAMPLE: stdin | rulecat toggle <START-INDEX>")
+	fmt.Println("EXAMPLE: stdin | rulecat blank")
 }
 
 // appendRules will turn stdin to append rules
@@ -147,5 +150,12 @@ func toggleRules(stdIn *bufio.Scanner, index string) {
 		if rule != "" {
 			fmt.Println(rule)
 		}
+	}
+}
+
+// blankLines will print a blank line for each item in stdin for -a9
+func blankLines(stdIn *bufio.Scanner) {
+	for stdIn.Scan() {
+		fmt.Println("")
 	}
 }

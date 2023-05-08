@@ -2,7 +2,7 @@
 Rulecat
  </h1>
 
-Rulecat (`cat` rule) performs 5 unique functions:
+Rulecat (`cat` rule) performs 6 unique functions:
 - Creates append rules from `stdin`
     - Normal append
     - Remove append (`]`)
@@ -17,6 +17,8 @@ Rulecat (`cat` rule) performs 5 unique functions:
     - Select starting index
 - Creates toggle rules from `stdin`
     - Select offset/starting index for toggles
+- Creates blank lines from `stdin`
+    - Commonly used when doing `-a9` attacks
 
 > See also [maskcat](https://github.com/JakeWnuk/maskcat/tree/main).
 
