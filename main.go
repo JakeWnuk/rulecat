@@ -59,6 +59,7 @@ func printUsage() {
 	fmt.Println("OPTIONS: append prepend insert overwrite toggle")
 	fmt.Println("EXAMPLE: stdin | rulecat append")
 	fmt.Println("EXAMPLE: stdin | rulecat prepend")
+	fmt.Println("EXAMPLE: stdin | rulecat blank")
 	fmt.Println("EXAMPLE: stdin | rulecat append remove")
 	fmt.Println("EXAMPLE: stdin | rulecat prepend remove")
 	fmt.Println("EXAMPLE: stdin | rulecat append shift")
@@ -66,7 +67,6 @@ func printUsage() {
 	fmt.Println("EXAMPLE: stdin | rulecat insert <START-INDEX>")
 	fmt.Println("EXAMPLE: stdin | rulecat overwrite <START-INDEX>")
 	fmt.Println("EXAMPLE: stdin | rulecat toggle <START-INDEX>")
-	fmt.Println("EXAMPLE: stdin | rulecat blank")
 }
 
 // appendRules will turn stdin to append rules

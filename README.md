@@ -47,6 +47,7 @@ $ cat test.tmp | rulecat
 OPTIONS: append prepend insert overwrite toggle
 EXAMPLE: stdin | rulecat append
 EXAMPLE: stdin | rulecat prepend
+EXAMPLE: stdin | rulecat blank
 EXAMPLE: stdin | rulecat append remove
 EXAMPLE: stdin | rulecat prepend remove
 EXAMPLE: stdin | rulecat append shift
