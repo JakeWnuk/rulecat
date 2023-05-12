@@ -2,7 +2,7 @@
 Rulecat
  </h1>
 
-Rulecat (`cat` rule) performs 6 unique functions:
+Rulecat (`cat` rule) performs six (6) unique functions:
 - Creates append rules from `stdin`
     - Normal append
     - Remove append (`]`)
@@ -20,7 +20,8 @@ Rulecat (`cat` rule) performs 6 unique functions:
 - Creates blank lines from `stdin`
     - Commonly used when doing `-a9` attacks
 
-> See also [maskcat](https://github.com/JakeWnuk/maskcat/tree/main).
+- For more application examples: [blog post](https://jakewnuk.com/posts/brewing-hash-cracking-resources-w-the-twin-cats/)
+- See also [maskcat](https://github.com/JakeWnuk/maskcat/tree/main).
 
 ## Getting Started
 
