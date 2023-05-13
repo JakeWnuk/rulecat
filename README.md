@@ -16,15 +16,15 @@ Rulecat (`cat` rule) performs eight (8) unique functions:
 - Create Cartesian product of a file and `stdin`
     - For every item in `stdin` and a rule file create a combination
     - `stdin` is placed before file content
+- Creates custom rules per character from `stdin`
+    - Inserts custom rule before each character
+    - Create unique combinations: `@`, `!`, `/`, and others
 - Creates insert rules from `stdin`
     - Select starting index
 - Creates overwrite rules from `stdin`
     - Select starting index
 - Creates toggle rules from `stdin`
     - Select offset/starting index for toggles
-- Creates custom rules per character from `stdin`
-    - Inserts custom rule before each character
-    - Create unique combinations: `@`, `!`, `/`, and others
 
 - For more application examples: [blog post](https://jakewnuk.com/posts/brewing-hash-cracking-resources-w-the-twin-cats/)
 - See also [maskcat](https://github.com/JakeWnuk/maskcat/tree/main).
