@@ -54,7 +54,7 @@ Is A
 Test123
 
 $ cat test.tmp | rulecat
-OPTIONS: append prepend insert overwrite toggle
+OPTIONS: append prepend blank <RULE-FILE> chars insert overwrite toggle
 EXAMPLE: stdin | rulecat append
 EXAMPLE: stdin | rulecat prepend
 EXAMPLE: stdin | rulecat append remove

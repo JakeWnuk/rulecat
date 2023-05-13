@@ -68,7 +68,7 @@ func main() {
 
 // printUsage prints usage information for the program
 func printUsage() {
-	fmt.Println("OPTIONS: append prepend blank <file> insert overwrite toggle")
+	fmt.Println("OPTIONS: append prepend blank <RULE-FILE> chars insert overwrite toggle")
 	fmt.Println("EXAMPLE: stdin | rulecat append")
 	fmt.Println("EXAMPLE: stdin | rulecat prepend")
 	fmt.Println("EXAMPLE: stdin | rulecat append remove")
