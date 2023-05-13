@@ -4,8 +4,10 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/jakewnuk/rulecat/pkg/utils"
 )
@@ -17,6 +19,14 @@ func main() {
 	}
 
 	stdIn := bufio.NewScanner(os.Stdin)
+
+	_, err := os.Stat(os.Args[1])
+	if err == nil {
+		file, err := ioutil.ReadFile(os.Args[1])
+		utils.CheckError(err)
+		cartesianRules(stdIn, file)
+		os.Exit(0)
+	}
 
 	switch os.Args[1] {
 	case "append":
@@ -48,6 +58,8 @@ func main() {
 		toggleRules(stdIn, os.Args[2])
 	case "blank":
 		blankLines(stdIn)
+	case "chars":
+		charsToRules(stdIn, os.Args[2])
 	default:
 		printUsage()
 		os.Exit(0)
@@ -56,14 +68,16 @@ func main() {
 
 // printUsage prints usage information for the program
 func printUsage() {
-	fmt.Println("OPTIONS: append prepend insert overwrite toggle")
+	fmt.Println("OPTIONS: append prepend blank <file> insert overwrite toggle")
 	fmt.Println("EXAMPLE: stdin | rulecat append")
 	fmt.Println("EXAMPLE: stdin | rulecat prepend")
-	fmt.Println("EXAMPLE: stdin | rulecat blank")
 	fmt.Println("EXAMPLE: stdin | rulecat append remove")
 	fmt.Println("EXAMPLE: stdin | rulecat prepend remove")
 	fmt.Println("EXAMPLE: stdin | rulecat append shift")
 	fmt.Println("EXAMPLE: stdin | rulecat prepend shift")
+	fmt.Println("EXAMPLE: stdin | rulecat blank")
+	fmt.Println("EXAMPLE: stdin | rulecat <RULE-FILE>")
+	fmt.Println("EXAMPLE: stdin | rulecat chars <RULE>")
 	fmt.Println("EXAMPLE: stdin | rulecat insert <START-INDEX>")
 	fmt.Println("EXAMPLE: stdin | rulecat overwrite <START-INDEX>")
 	fmt.Println("EXAMPLE: stdin | rulecat toggle <START-INDEX>")
@@ -158,4 +172,27 @@ func blankLines(stdIn *bufio.Scanner) {
 	for stdIn.Scan() {
 		fmt.Println("")
 	}
+}
+
+// cartesianRules will create the Caresian product of stdin and the input file
+// NOTE: stdin will be placed before file content
+func cartesianRules(stdIn *bufio.Scanner, file []byte) {
+	fileLines := strings.Split(string(file), "\n")
+	for stdIn.Scan() {
+		input := stdIn.Text()
+		for _, line := range fileLines {
+			if line != "" {
+				fmt.Printf("%s %s\n", input, line)
+			}
+		}
+	}
+}
+
+// charsToRules will insert a custom rule before each character
+func charsToRules(stdIn *bufio.Scanner, rule string) {
+	for stdIn.Scan() {
+		rule := utils.CharToRule(stdIn.Text(), rule)
+		fmt.Println(rule)
+	}
+
 }

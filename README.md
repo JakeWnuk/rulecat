@@ -2,7 +2,7 @@
 Rulecat
  </h1>
 
-Rulecat (`cat` rule) performs six (6) unique functions:
+Rulecat (`cat` rule) performs eight (8) unique functions:
 - Creates append rules from `stdin`
     - Normal append
     - Remove append (`]`)
@@ -11,14 +11,20 @@ Rulecat (`cat` rule) performs six (6) unique functions:
     - Normal prepend
     - Remove prepend (`[`)
     - Shift then prepend (`{`)
+- Creates blank lines from `stdin`
+    - Commonly used when doing `-a9` attacks
+- Create Cartesian product of a file and `stdin`
+    - For every item in `stdin` and a rule file create a combination
+    - `stdin` is placed before file content
 - Creates insert rules from `stdin`
     - Select starting index
 - Creates overwrite rules from `stdin`
     - Select starting index
 - Creates toggle rules from `stdin`
     - Select offset/starting index for toggles
-- Creates blank lines from `stdin`
-    - Commonly used when doing `-a9` attacks
+- Creates custom rules per character from `stdin`
+    - Inserts custom rule before each character
+    - Create unique combinations: `@`, `!`, `/`, and others
 
 - For more application examples: [blog post](https://jakewnuk.com/posts/brewing-hash-cracking-resources-w-the-twin-cats/)
 - See also [maskcat](https://github.com/JakeWnuk/maskcat/tree/main).
@@ -28,6 +34,9 @@ Rulecat (`cat` rule) performs six (6) unique functions:
 - [Install](#install)
 - [Append Rules](#Append-Rules)
 - [Prepend Rules](#Prepend-Rules)
+- [Blank Lines](#Blank-Lines)
+- [Cartesian Rules](#Cartesian-Rules)
+- [Character to Rules](#Character-to-Rules)
 - [Insert Rules](#Insert-Rules)
 - [Overwrite Rules](#Overwrite-Rules)
 - [Toggle Rules](#Toggle-Rules)
@@ -48,11 +57,13 @@ $ cat test.tmp | rulecat
 OPTIONS: append prepend insert overwrite toggle
 EXAMPLE: stdin | rulecat append
 EXAMPLE: stdin | rulecat prepend
-EXAMPLE: stdin | rulecat blank
 EXAMPLE: stdin | rulecat append remove
 EXAMPLE: stdin | rulecat prepend remove
 EXAMPLE: stdin | rulecat append shift
 EXAMPLE: stdin | rulecat prepend shift
+EXAMPLE: stdin | rulecat blank
+EXAMPLE: stdin | rulecat <RULE-FILE>
+EXAMPLE: stdin | rulecat chars <RULE>
 EXAMPLE: stdin | rulecat insert <START-INDEX>
 EXAMPLE: stdin | rulecat overwrite <START-INDEX>
 EXAMPLE: stdin | rulecat toggle <START-INDEX>
@@ -102,6 +113,44 @@ $ cat test.tmp | rulecat shift
 { { { { ^s ^i ^h ^T
 { { { { ^A ^  ^s ^I
 { { { { { { { ^3 ^2 ^1 ^t ^s ^e ^T
+```
+
+## Blank Lines
+- Creates blank lines from `stdin`
+- Commonly used when doing `-a9` attacks
+```
+$ cat test.tmp | rulecat blank
+
+
+
+```
+
+## Cartesian Rules
+- For every item in `stdin` and a rule file create a combination
+- `stdin` is placed before file content
+```
+$ cat test.rule
+u
+$1 $2 $3
+```
+```
+$ cat test.tmp | rulecat append | rulecat test.rule
+$T $h $i $s u
+$T $h $i $s $1 $2 $3
+$I $s $  $A u
+$I $s $  $A $1 $2 $3
+$T $e $s $t $1 $2 $3 u
+$T $e $s $t $1 $2 $3 $1 $2 $3
+```
+
+## Character to Rules
+- Inserts custom rule before each character
+- Create unique combinations: `@`, `!`, `/`, and others
+```
+$ cat test.tmp | rulecat chars @
+@T @h @i @s
+@I @s @  @A
+@T @e @s @t @1 @2 @3
 ```
 
 ## Insert Rules
