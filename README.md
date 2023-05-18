@@ -26,7 +26,9 @@ Rulecat (`cat` rule) performs eight (8) unique functions:
 - Creates toggle rules from `stdin`
     - Select offset/starting index for toggles
 
-- For more application examples: [blog post](https://jakewnuk.com/posts/brewing-hash-cracking-resources-w-the-twin-cats/)
+- For more application examples: 
+    - [Rulecat Examples](https://jakewnuk.com/posts/brewing-hash-cracking-resources-w-the-twin-cats/)
+    - [Rulecat Usages](https://jakewnuk.com/posts/how-to-use-rulecat-to-crack-the-perfect-eggs-every-time/)
 - See also [maskcat](https://github.com/JakeWnuk/maskcat/tree/main).
 
 ## Getting Started
