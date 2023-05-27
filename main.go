@@ -91,19 +91,19 @@ func appendRules(stdIn *bufio.Scanner, mode string) {
 		for stdIn.Scan() {
 			rule := utils.CharToRule(stdIn.Text(), "$")
 			remove := utils.LenToRule(stdIn.Text(), "]")
-			fmt.Println(remove, rule)
+			utils.PrintCharacterRuleOutput(remove, rule)
 		}
 	// shift will shift characters back to front then append
 	case "shift":
 		for stdIn.Scan() {
 			rule := utils.CharToRule(stdIn.Text(), "$")
 			shift := utils.LenToRule(stdIn.Text(), "}")
-			fmt.Println(shift, rule)
+			utils.PrintCharacterRuleOutput(shift, rule)
 		}
 	default:
 		for stdIn.Scan() {
 			rule := utils.CharToRule(stdIn.Text(), "$")
-			fmt.Println(rule)
+			utils.PrintCharacterRuleOutput(rule)
 		}
 	}
 
@@ -117,19 +117,19 @@ func prependRules(stdIn *bufio.Scanner, mode string) {
 		for stdIn.Scan() {
 			rule := utils.CharToRule(utils.ReverseString(stdIn.Text()), "^")
 			remove := utils.LenToRule(stdIn.Text(), "[")
-			fmt.Println(remove, rule)
+			utils.PrintCharacterRuleOutput(remove, rule)
 		}
 	// shift will shift characters front to back then prepend
 	case "shift":
 		for stdIn.Scan() {
 			rule := utils.CharToRule(utils.ReverseString(stdIn.Text()), "^")
 			shift := utils.LenToRule(stdIn.Text(), "{")
-			fmt.Println(shift, rule)
+			utils.PrintCharacterRuleOutput(shift, rule)
 		}
 	default:
 		for stdIn.Scan() {
 			rule := utils.CharToRule(utils.ReverseString(stdIn.Text()), "^")
-			fmt.Println(rule)
+			utils.PrintCharacterRuleOutput(rule)
 		}
 	}
 
@@ -192,7 +192,7 @@ func cartesianRules(stdIn *bufio.Scanner, file []byte) {
 func charsToRules(stdIn *bufio.Scanner, rule string) {
 	for stdIn.Scan() {
 		rule := utils.CharToRule(stdIn.Text(), rule)
-		fmt.Println(rule)
+		utils.PrintCharacterRuleOutput(rule)
 	}
 
 }

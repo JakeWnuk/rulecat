@@ -92,3 +92,64 @@ func TestReverseString(t *testing.T) {
 		}
 	}
 }
+
+func TestCheckASCIIString(t *testing.T) {
+	tests := []struct {
+		name string
+		str  string
+		want bool
+	}{
+		{
+			name: "All ASCII characters",
+			str:  "Hello, World!",
+			want: true,
+		},
+		{
+			name: "Contains non-ASCII character",
+			str:  "Hello, 世界!",
+			want: false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := CheckASCIIString(tt.str)
+			if got != tt.want {
+				t.Errorf("CheckASCIIString(%q) = %v, want %v", tt.str, got, tt.want)
+			}
+		})
+	}
+}
+
+func TestConvertCharacterMultiByteString(t *testing.T) {
+	tests := []struct {
+		name string
+		str  string
+		want string
+	}{
+		{
+			name: "All ASCII characters",
+			str:  "$H $e $l $l $o $ $W $o $r $l $d $!",
+			want: "$H $e $l $l $o $ $W $o $r $l $d $!",
+		},
+		{
+			name: "Contains non-ASCII character",
+			str:  "$H $e $l $l $o $  $世 $界 $!",
+			want: "$H $e $l $l $o $  $\\xE4 $\\xB8 $\\x96 $\\xE7 $\\x95 $\\x8C $!",
+		},
+		{
+			name: "Contains non-ASCII character with ^",
+			str:  "^! ^界 ^世 ^  ^o ^l ^l ^e ^H",
+			want: "^! ^\\x8C ^\\x95 ^\\xE7 ^\\x96 ^\\xB8 ^\\xE4 ^  ^o ^l ^l ^e ^H",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := ConvertCharacterMultiByteString(tt.str)
+			if got != tt.want {
+				t.Errorf("ConvertCharacterMultiByteString(%q) = %v, want %v", tt.str, got, tt.want)
+			}
+		})
+	}
+}

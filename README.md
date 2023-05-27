@@ -7,10 +7,12 @@ Rulecat (`cat` rule) performs eight (8) unique functions:
     - Normal append
     - Remove append (`]`)
     - Shift then append (`}`)
+    - Multibyte character support
 - Creates prepend rules from `stdin`
     - Normal prepend
     - Remove prepend (`[`)
     - Shift then prepend (`{`)
+    - Multibyte character support
 - Creates blank lines from `stdin`
     - Commonly used when doing `-a9` attacks
 - Create Cartesian product of a file and `stdin`
@@ -19,6 +21,7 @@ Rulecat (`cat` rule) performs eight (8) unique functions:
 - Creates custom rules per character from `stdin`
     - Inserts custom rule before each character
     - Create unique combinations: `@`, `!`, `/`, and others
+    - Multibyte character support
 - Creates insert rules from `stdin`
     - Select starting index
 - Creates overwrite rules from `stdin`
@@ -75,6 +78,7 @@ EXAMPLE: stdin | rulecat toggle <START-INDEX>
 - Creates append rules from `stdin`
 - Three (3) modes: default, remove, shift
 - Shift in append mode moves characters back to front
+- Multibyte character support
 ```
 $ cat test.tmp | rulecat append
 $T $h $i $s
@@ -98,6 +102,7 @@ $ cat test.tmp | rulecat append shift
 - Creates prepend rules from `stdin`
 - Three (3) modes: default, remove, shift
 - Shift in prepend mode moves characters front to back
+- Multibyte character support
 ```
 $ cat test.tmp | rulecat prepend
 ^s ^i ^h ^T
@@ -148,6 +153,7 @@ $T $e $s $t $1 $2 $3 $1 $2 $3
 ## Character to Rules
 - Inserts custom rule before each character
 - Create unique combinations: `@`, `!`, `/`, and others
+- Multibyte character support
 ```
 $ cat test.tmp | rulecat chars @
 @T @h @i @s
