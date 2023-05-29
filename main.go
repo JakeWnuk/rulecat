@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/jakewnuk/rulecat/pkg/cmd"
 	"github.com/jakewnuk/rulecat/pkg/utils"
 )
 
@@ -34,32 +35,32 @@ func main() {
 		if len(os.Args) == 2 {
 			os.Args = append(os.Args, "default")
 		}
-		appendRules(stdIn, os.Args[2])
+		cmd.AppendRules(stdIn, os.Args[2])
 	case "prepend":
 		// if no mode use default
 		if len(os.Args) == 2 {
 			os.Args = append(os.Args, "default")
 		}
-		prependRules(stdIn, os.Args[2])
+		cmd.PrependRules(stdIn, os.Args[2])
 	case "insert":
 		if len(os.Args) == 2 {
 			os.Args = append(os.Args, "0")
 		}
-		insertRules(stdIn, os.Args[2])
+		cmd.InsertRules(stdIn, os.Args[2])
 	case "overwrite":
 		if len(os.Args) == 2 {
 			os.Args = append(os.Args, "0")
 		}
-		overwriteRules(stdIn, os.Args[2])
+		cmd.OverwriteRules(stdIn, os.Args[2])
 	case "toggle":
 		if len(os.Args) == 2 {
 			os.Args = append(os.Args, "0")
 		}
-		toggleRules(stdIn, os.Args[2])
+		cmd.ToggleRules(stdIn, os.Args[2])
 	case "blank":
-		blankLines(stdIn)
+		cmd.BlankLines(stdIn)
 	case "chars":
-		charsToRules(stdIn, os.Args[2])
+		cmd.CharsToRules(stdIn, os.Args[2])
 	default:
 		printUsage()
 		os.Exit(0)
