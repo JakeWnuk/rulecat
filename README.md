@@ -39,15 +39,15 @@ Rulecat (`cat` rule) performs eight (8) unique functions:
 ## Getting Started
 
 - [Install](#install)
-- [Append Rules](#Append-Rules)
-- [Prepend Rules](#Prepend-Rules)
-- [Blank Lines](#Blank-Lines)
-- [Cartesian Rules](#Cartesian-Rules)
-- [Character to Rules](#Character-to-Rules)
-- [Insert Rules](#Insert-Rules)
-- [Overwrite Rules](#Overwrite-Rules)
-- [Toggle Rules](#Toggle-Rules)
-- [Custom Expressions](#Custom-Expressions)
+- [Append Rules](#append-rules)
+- [Prepend Rules](#prepend-rules)
+- [Blank Lines](#blank-lines)
+- [Cartesian Rules](#cartesian-rules)
+- [Character to Rules](#character-to-rules)
+- [Insert Rules](#insert-rules)
+- [Overwrite Rules](#overwrite-rules)
+- [Toggle Rules](#toggle-rules)
+- [Custom Expressions](#custom-expressions)
 
 ### Install
 
