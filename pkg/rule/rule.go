@@ -1,9 +1,10 @@
-// Package cmd contains the CLI logic for rulecat
-package cmd
+// Package rule contains the CLI logic for rulecat
+package rule
 
 import (
 	"bufio"
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
 
@@ -11,6 +12,15 @@ import (
 )
 
 // AppendRules will turn stdin to append rules
+//
+// Args:
+//
+//	stdIn (*bufio.Scanner): Standard input as a buffer
+//	mode (string): Mode function to use to modify operation
+//
+// Returns:
+//
+//	None
 func AppendRules(stdIn *bufio.Scanner, mode string) {
 	switch mode {
 	// remove will remove characters then append
@@ -37,6 +47,15 @@ func AppendRules(stdIn *bufio.Scanner, mode string) {
 }
 
 // PrependRules will turn stdin to prepend rules
+//
+// Args:
+//
+//	stdIn (*bufio.Scanner): Standard input as a buffer
+//	mode (string): Mode function to use to modify operation
+//
+// Returns:
+//
+//	None
 func PrependRules(stdIn *bufio.Scanner, mode string) {
 	switch mode {
 	// remove will remove characters then prepend
@@ -63,9 +82,21 @@ func PrependRules(stdIn *bufio.Scanner, mode string) {
 }
 
 // InsertRules will turn stdin to insert rules starting at an index
+//
+// Args:
+//
+//	stdIn (*bufio.Scanner): Standard input as a buffer
+//	index (string): Integer of where to start the operation
+//
+// Returns:
+//
+//	None
 func InsertRules(stdIn *bufio.Scanner, index string) {
 	i, err := strconv.Atoi(index)
-	utils.CheckError(err)
+	if err != nil {
+		fmt.Printf("ERROR: %s\n", err)
+		os.Exit(1)
+	}
 	for stdIn.Scan() {
 		rule := utils.CharToIteratingRule(stdIn.Text(), "i", i)
 		fmt.Println(rule)
@@ -73,9 +104,21 @@ func InsertRules(stdIn *bufio.Scanner, index string) {
 }
 
 // OverwriteRules will turn stdin to overwrite rules starting at an index
+//
+// Args:
+//
+//	stdIn (*bufio.Scanner): Standard input as a buffer
+//	index (string): Integer of where to start the operation
+//
+// Returns:
+//
+//	None
 func OverwriteRules(stdIn *bufio.Scanner, index string) {
 	i, err := strconv.Atoi(index)
-	utils.CheckError(err)
+	if err != nil {
+		fmt.Printf("ERROR: %s\n", err)
+		os.Exit(1)
+	}
 	for stdIn.Scan() {
 		rule := utils.CharToIteratingRule(stdIn.Text(), "o", i)
 		fmt.Println(rule)
@@ -83,9 +126,21 @@ func OverwriteRules(stdIn *bufio.Scanner, index string) {
 }
 
 // ToggleRules will turn stdin to toggle rules starting at an index
+//
+// Args:
+//
+//	stdIn (*bufio.Scanner): Standard input as a buffer
+//	index (string): Integer of where to start the operation
+//
+// Returns:
+//
+//	None
 func ToggleRules(stdIn *bufio.Scanner, index string) {
 	i, err := strconv.Atoi(index)
-	utils.CheckError(err)
+	if err != nil {
+		fmt.Printf("ERROR: %s\n", err)
+		os.Exit(1)
+	}
 	for stdIn.Scan() {
 		rule := utils.StringToToggle(stdIn.Text(), "T", i)
 		if rule != "" {
@@ -95,6 +150,14 @@ func ToggleRules(stdIn *bufio.Scanner, index string) {
 }
 
 // BlankLines will print a blank line for each item in stdin for -a9
+//
+// Args:
+//
+//	stdIn (*bufio.Scanner): Standard input as a buffer
+//
+// Returns:
+//
+//	None
 func BlankLines(stdIn *bufio.Scanner) {
 	for stdIn.Scan() {
 		fmt.Println("")
@@ -102,7 +165,17 @@ func BlankLines(stdIn *bufio.Scanner) {
 }
 
 // CartesianRules will create the Caresian product of stdin and the input file
-// NOTE: stdin will be placed before file content
+//
+// # Standard input will be placed before file content
+//
+// Args:
+//
+//	stdIn (*bufio.Scanner): Standard input as a buffer
+//	file ([]byte): Lines of a file that are used in the operation
+//
+// Returns:
+//
+//	None
 func CartesianRules(stdIn *bufio.Scanner, file []byte) {
 	fileLines := strings.Split(string(file), "\n")
 	for stdIn.Scan() {
@@ -116,6 +189,15 @@ func CartesianRules(stdIn *bufio.Scanner, file []byte) {
 }
 
 // CharsToRules will insert a custom rule before each character
+//
+// Args:
+//
+//	stdIn (*bufio.Scanner): Standard input as a buffer
+//	rule (string): String that is used in the operation
+//
+// Returns:
+//
+//	None
 func CharsToRules(stdIn *bufio.Scanner, rule string) {
 	for stdIn.Scan() {
 		rule := utils.CharToRule(stdIn.Text(), rule)

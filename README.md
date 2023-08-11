@@ -28,6 +28,8 @@ Rulecat (`cat` rule) performs eight (8) unique functions:
     - Select starting index
 - Creates toggle rules from `stdin`
     - Select offset/starting index for toggles
+- Creates custom text rehashing based on an expression
+    - Create a custom expression like `100xmd5(sha1(p))`
 
 - For more application examples: 
     - [Rulecat Examples](https://jakewnuk.com/posts/brewing-hash-cracking-resources-w-the-twin-cats/)
@@ -45,13 +47,16 @@ Rulecat (`cat` rule) performs eight (8) unique functions:
 - [Insert Rules](#Insert-Rules)
 - [Overwrite Rules](#Overwrite-Rules)
 - [Toggle Rules](#Toggle-Rules)
+- [Custom Expressions](#Custom-Expressions)
 
 ### Install
 
 ```
 go install -v github.com/jakewnuk/rulecat@latest
 ```
-
+```
+git clone https://github.com/JakeWnuk/rulecat && cd rulecat && go build ./cmd/rulecat
+```
 ```
 $ cat test.tmp
 This
@@ -59,19 +64,39 @@ Is A
 Test123
 
 $ cat test.tmp | rulecat
-OPTIONS: append prepend blank <RULE-FILE> chars insert overwrite toggle
-EXAMPLE: stdin | rulecat append
-EXAMPLE: stdin | rulecat prepend
-EXAMPLE: stdin | rulecat append remove
-EXAMPLE: stdin | rulecat prepend remove
-EXAMPLE: stdin | rulecat append shift
-EXAMPLE: stdin | rulecat prepend shift
-EXAMPLE: stdin | rulecat blank
-EXAMPLE: stdin | rulecat <RULE-FILE>
-EXAMPLE: stdin | rulecat chars <RULE>
-EXAMPLE: stdin | rulecat insert <START-INDEX>
-EXAMPLE: stdin | rulecat overwrite <START-INDEX>
-EXAMPLE: stdin | rulecat toggle <START-INDEX>
+Modes for rulecat (version 2.0.0):
+
+  append                Creates append rules from text
+                Example: stdin | rulecat append
+                Example: stdin | rulecat append remove
+                Example: stdin | rulecat append shift
+
+  prepend               Creates prepend rules from text
+                Example: stdin | rulecat prepend
+                Example: stdin | rulecat prepend remove
+                Example: stdin | rulecat prepend shift
+
+  blank         Creates blank lines from text
+                Example: stdin | rulecat blank
+
+  [RULE-FILE]           Create Cartesian product of a file and text
+                Example: stdin | rulecat [FILE]
+
+  chars         Creates custom rules per character from text
+                Example: stdin | rulecat chars [RULE]
+
+  insert                Creates insert rules from from text
+                Example: stdin | rulecat insert [START-INDEX]
+
+  overwrite             Creates overwrite rules from from text
+                Example: stdin | rulecat overwrite [START-INDEX]
+
+  toggle                Creates toggle rules from from text
+                Example: stdin | rulecat toggle [START-INDEX]
+
+  custom                Creates custom text rehashing from an expression
+                Example: stdin | rulecat custom [EXPRESSION]
+                Example: stdin | rulecat custom 2xmd5(sha1(p))
 ```
 
 ## Append Rules
@@ -207,4 +232,14 @@ $ cat test.tmp | rulecat toggle 3
 T3
 T3 T6
 T3
+```
+
+## Custom Expressions
+- Creates custom text rehashing based on a given expression
+- Examples: `sha256(md5(p))` or `100xmd5(p)`
+```
+$ cat test.tmp | rulecat custom "100xmd5(p)"
+f6a11b053985c4b9ee9eb8d867fd566f
+39840dd1dea35531cd02746bf84c8f6e
+1123d54890652bd74f2adcf104dbd4a3
 ```

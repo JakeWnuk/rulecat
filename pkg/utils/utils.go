@@ -3,24 +3,51 @@ package utils
 
 import (
 	"fmt"
-	"os"
 	"strings"
 	"unicode"
 	"unicode/utf8"
 )
 
 // LenToRule converts a string to a rule by its length
+//
+// Args:
+//
+//	str (string): Input string to transform
+//	rule (string): Rule to insert per length
+//
+// Returns:
+//
+//	(string): Transformed string
 func LenToRule(str string, rule string) string {
 	return strings.TrimSpace(strings.Repeat(rule+" ", len(str)))
 }
 
 // CharToRule converts a string to a rule by its characters
+//
+// Args:
+//
+//	str (string): Input string to transform
+//	rule (string): Rule to insert per character
+//
+// Returns:
+//
+//	(string): Transformed string
 func CharToRule(str string, rule string) string {
 	return rule + strings.Join(strings.Split(str, ""), " "+rule)
 }
 
 // CharToIteratingRule converts a string to a rule by its characters but
 // increments along with each character
+//
+// Args:
+//
+//	str (string): Input string to transform
+//	rule (string): Rule to insert per length
+//	index (int): Index to start at
+//
+// Returns:
+//
+//	(string): Transformed string
 func CharToIteratingRule(str string, rule string, index int) string {
 	var result strings.Builder
 	for i, r := range str {
@@ -34,6 +61,16 @@ func CharToIteratingRule(str string, rule string, index int) string {
 }
 
 // StringToToggle converts a string to toggle rules by looking for upper chars
+//
+// Args:
+//
+//	str (string): Input string to transform
+//	rule (string): Rule to insert per length
+//	index (int): Index to start at
+//
+// Returns:
+//
+//	(string): Transformed string
 func StringToToggle(str string, rule string, index int) string {
 	var result strings.Builder
 	for i, r := range str {
@@ -49,6 +86,14 @@ func StringToToggle(str string, rule string, index int) string {
 }
 
 // ReverseString will return a string in reverse
+//
+// Args:
+//
+//	str (string): Input string to transform
+//
+// Returns:
+//
+//	(string): Transformed string
 func ReverseString(s string) string {
 	runes := []rune(s)
 	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
@@ -58,6 +103,14 @@ func ReverseString(s string) string {
 }
 
 // CheckASCIIString checks to see if a string only contains ascii characters
+//
+// Args:
+//
+//	str (string): Input string to check
+//
+// Returns:
+//
+//	(bool): If the string only contained ASCII characters
 func CheckASCIIString(str string) bool {
 	if utf8.RuneCountInString(str) != len(str) {
 		return false
@@ -66,7 +119,16 @@ func CheckASCIIString(str string) bool {
 }
 
 // PrintCharacterRuleOutput handles printing the rules to the CLI
-// Prints for CharToRule functions
+//
+// prints for CharToRule functions
+//
+// Args:
+//
+//	strs (...string): Input strings to print
+//
+// Returns:
+//
+// None
 func PrintCharacterRuleOutput(strs ...string) {
 	output := ""
 	for _, str := range strs {
@@ -80,7 +142,16 @@ func PrintCharacterRuleOutput(strs ...string) {
 }
 
 // ConvertCharacterMultiByteString converts non-ascii characters to a hashcat valid format
-// Converts for CharToRule functions
+//
+// converts for CharToRule functions
+//
+// Args:
+//
+//	str (string): Input string to transform
+//
+// Returns:
+//
+//	returnStr (string): Converted string
 func ConvertCharacterMultiByteString(str string) string {
 	returnStr := ""
 	deletedChar := ``
@@ -114,12 +185,4 @@ func ConvertCharacterMultiByteString(str string) string {
 		}
 	}
 	return returnStr
-}
-
-// CheckError is a general error handler
-func CheckError(err error) {
-	if err != nil {
-		fmt.Printf("ERROR: %s\n", err)
-		os.Exit(1)
-	}
 }
