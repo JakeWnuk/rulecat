@@ -64,7 +64,7 @@ Is A
 Test123
 
 $ cat test.tmp | rulecat
-Modes for rulecat (version 2.0.0):
+Modes for rulecat (version 1.2.0):
 
   append                Creates append rules from text
                 Example: stdin | rulecat append
