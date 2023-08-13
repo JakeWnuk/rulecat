@@ -2,7 +2,7 @@
 Rulecat
  </h1>
 
-Rulecat (`cat` rule) performs eight (8) unique functions:
+Rulecat (`cat` rule) performs nine (9) unique functions:
 - Creates append rules from `stdin`
     - Normal append
     - Remove append (`]`)
@@ -51,9 +51,11 @@ Rulecat (`cat` rule) performs eight (8) unique functions:
 
 ### Install
 
+#### Go
 ```
-go install -v github.com/jakewnuk/rulecat@latest
+go install -v github.com/jakewnuk/rulecat/cmd/rulecat@latest
 ```
+#### From Source
 ```
 git clone https://github.com/JakeWnuk/rulecat && cd rulecat && go build ./cmd/rulecat
 ```
@@ -66,12 +68,12 @@ Test123
 $ cat test.tmp | rulecat
 Modes for rulecat (version 1.2.0):
 
-  append                Creates append rules from text
+  append        Creates append rules from text
                 Example: stdin | rulecat append
                 Example: stdin | rulecat append remove
                 Example: stdin | rulecat append shift
 
-  prepend               Creates prepend rules from text
+  prepend       Creates prepend rules from text
                 Example: stdin | rulecat prepend
                 Example: stdin | rulecat prepend remove
                 Example: stdin | rulecat prepend shift
@@ -79,22 +81,22 @@ Modes for rulecat (version 1.2.0):
   blank         Creates blank lines from text
                 Example: stdin | rulecat blank
 
-  [RULE-FILE]           Create Cartesian product of a file and text
+  [RULE-FILE]   Create Cartesian product of a file and text
                 Example: stdin | rulecat [FILE]
 
   chars         Creates custom rules per character from text
                 Example: stdin | rulecat chars [RULE]
 
-  insert                Creates insert rules from from text
+  insert        Creates insert rules from from text
                 Example: stdin | rulecat insert [START-INDEX]
 
-  overwrite             Creates overwrite rules from from text
+  overwrite     Creates overwrite rules from from text
                 Example: stdin | rulecat overwrite [START-INDEX]
 
-  toggle                Creates toggle rules from from text
+  toggle        Creates toggle rules from from text
                 Example: stdin | rulecat toggle [START-INDEX]
 
-  custom                Creates custom text rehashing from an expression
+  custom        Creates custom text rehashing from an expression
                 Example: stdin | rulecat custom [EXPRESSION]
                 Example: stdin | rulecat custom 2xmd5(sha1(p))
 ```
