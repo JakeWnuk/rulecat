@@ -57,7 +57,7 @@ go install -v github.com/jakewnuk/rulecat/cmd/rulecat@latest
 ```
 #### From Source
 ```
-git clone https://github.com/JakeWnuk/rulecat && cd rulecat && go build ./cmd/rulecat
+git clone https://github.com/JakeWnuk/rulecat && cd rulecat && go build ./cmd/rulecat && mv ./rulecat ~/go/bin/
 ```
 ```
 $ cat test.tmp
