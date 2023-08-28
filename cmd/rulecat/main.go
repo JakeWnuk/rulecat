@@ -67,6 +67,10 @@ func main() {
 		rule.CharsToRules(stdIn, os.Args[2])
 	case "custom":
 		reform.RehashByExpression(stdIn, os.Args[2])
+	case "dehex":
+		reform.DehexInput(stdIn)
+	case "encode":
+		reform.EncodeInput(stdIn)
 	default:
 		printUsage()
 		os.Exit(0)
@@ -99,4 +103,8 @@ func printUsage() {
 	fmt.Println("\n  custom\tCreates custom text rehashing from an expression")
 	fmt.Println("\t\tExample: stdin | rulecat custom [EXPRESSION]")
 	fmt.Println("\t\tExample: stdin | rulecat custom 2xmd5(sha1(p))")
+	fmt.Println("\n  dehex\t\tDehexes $HEX[...] input to standard out")
+	fmt.Println("\t\tExample: stdin | rulecat dehex")
+	fmt.Println("\n  encode\tURL and HTML encodes input and prints new output")
+	fmt.Println("\t\tExample: stdin | rulecat encode")
 }
