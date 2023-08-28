@@ -105,6 +105,12 @@ Modes for rulecat (version 1.2.0):
   custom        Creates custom text rehashing from an expression
                 Example: stdin | rulecat custom [EXPRESSION]
                 Example: stdin | rulecat custom 2xmd5(sha1(p))
+
+  dehex         Dehexes $HEX[...] input to standard out
+                Example: stdin | rulecat dehex
+
+  encode        URL and HTML encodes input and prints new output
+                Example: stdin | rulecat encode
 ```
 
 ## Append Rules
