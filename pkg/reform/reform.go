@@ -67,9 +67,8 @@ func hashString(op hashOperation, input string) string {
 //
 // Returns:
 //
-//	expr (string): Provided expression
 //	operations ([]hashOperation): Parsed operations to use
-func parseHashExpression(expr string) (string, []hashOperation) {
+func parseHashExpression(expr string) []hashOperation {
 	var operations []hashOperation
 	for strings.Contains(expr, "(") && strings.Contains(expr, ")") {
 		start := strings.Index(expr, "(")
@@ -88,22 +87,7 @@ func parseHashExpression(expr string) (string, []hashOperation) {
 		}
 		expr = expr[start+1 : end]
 	}
-	return expr, operations
-}
-
-// replaceExpressionPlaceholder is used to replace placeholders with string
-// input
-//
-// Args:
-//
-//	input (string): Input string to replace
-//	expression (string): Expression to replace into
-//
-// Returns:
-//
-//	(string): Replaced expression
-func replaceExpressionPlaceholder(input string, expression string) string {
-	return strings.ReplaceAll(expression, "p", input)
+	return operations
 }
 
 // RehashByExpression is used to rehash a plaintext by a provided expression
@@ -118,8 +102,8 @@ func replaceExpressionPlaceholder(input string, expression string) string {
 //	None
 func RehashByExpression(stdIn *bufio.Scanner, expression string) {
 	for stdIn.Scan() {
-		expr := replaceExpressionPlaceholder(stdIn.Text(), expression)
-		input, operations := parseHashExpression(expr)
+		operations := parseHashExpression(expression)
+		input := string(stdIn.Text())
 		for i := len(operations) - 1; i >= 0; i-- {
 			input = hashString(operations[i], input)
 		}
