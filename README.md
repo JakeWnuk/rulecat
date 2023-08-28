@@ -239,6 +239,7 @@ T3
 ## Custom Expressions
 - Creates custom text rehashing based on a given expression
 - Examples: `sha256(md5(p))` or `100xmd5(p)`
+- Currently supports: `md5`, `sha1`, `sha256`, and `sha512`
 ```
 $ cat test.tmp | rulecat custom "100xmd5(p)"
 f6a11b053985c4b9ee9eb8d867fd566f
