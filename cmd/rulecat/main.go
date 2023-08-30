@@ -71,6 +71,8 @@ func main() {
 		reform.DehexInput(stdIn)
 	case "encode":
 		reform.EncodeInput(stdIn)
+	case "emoji":
+		reform.EmojiInput(stdIn, os.Args[2])
 	default:
 		printUsage()
 		os.Exit(0)
@@ -107,4 +109,6 @@ func printUsage() {
 	fmt.Println("\t\tExample: stdin | rulecat dehex")
 	fmt.Println("\n  encode\tURL and HTML encodes input and prints new output")
 	fmt.Println("\t\tExample: stdin | rulecat encode")
+	fmt.Println("\n  emoji\t\tReplaces strings in text with emojis up to N times")
+	fmt.Println("\t\tExample: stdin | rulecat emoji [NUMBER]")
 }

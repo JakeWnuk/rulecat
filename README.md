@@ -34,6 +34,8 @@ Rulecat (`cat` rule) performs eleven (11) unique functions:
     - Only prints dehexed text
 - URL and HTML encodes text from `stdin`
     - Only prints encoded text
+- Transforms text into emojis from `stdin`
+    - Select the number of replacements
 
 - For more application examples: 
     - [Rulecat Examples](https://jakewnuk.com/posts/brewing-hash-cracking-resources-w-the-twin-cats/)
@@ -54,6 +56,7 @@ Rulecat (`cat` rule) performs eleven (11) unique functions:
 - [Custom Expressions](#custom-expressions)
 - [Dehex Text](#dehex-text)
 - [URL & HTML Encode Text](#url-&-html-encode-text)
+- [Emoji Text](#emoji-text)
 
 ### Install
 
@@ -285,4 +288,12 @@ $ cat test.lst | rulecat encode
 %3Chello+World%21%3E
 &lt;hello World!&gt;
 Testing%24%21%40%25%21%2A%28%29
+```
+
+## Emoji Text
+- Select the number of replacements
+- Limited dictonary
+```
+$ echo 'I saw a Happy sun <3' | rulecat emoji 3
+I saw a 😊 ☀️ ❤️
 ```
