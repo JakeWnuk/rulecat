@@ -181,7 +181,7 @@ func TestHexInput(s string) bool {
 //	None
 func EncodeInput(stdIn *bufio.Scanner) {
 	for stdIn.Scan() {
-		urlEncoded, htmlEncoded := EncodeString(stdIn.Text())
+		urlEncoded, htmlEncoded, escapeEncoded := EncodeString(stdIn.Text())
 
 		if urlEncoded != "" {
 			fmt.Println(urlEncoded)
@@ -189,6 +189,10 @@ func EncodeInput(stdIn *bufio.Scanner) {
 
 		if htmlEncoded != "" {
 			fmt.Println(htmlEncoded)
+		}
+
+		if escapeEncoded != "" {
+			fmt.Println(escapeEncoded)
 		}
 	}
 }
@@ -205,9 +209,11 @@ func EncodeInput(stdIn *bufio.Scanner) {
 //
 //	urlEncoded (string): Input string URL encoded
 //	htmlEncoded (string): Input string HTML encoded
-func EncodeString(s string) (string, string) {
+//	escapedEncoded (string): Input string ASCII escaped encoded
+func EncodeString(s string) (string, string, string) {
 	urlEncoded := url.QueryEscape(s)
 	htmlEncoded := html.EscapeString(s)
+	escapedEncoded := AsciiEscapeUnicode(s)
 
 	if urlEncoded == s {
 		urlEncoded = ""
@@ -217,5 +223,34 @@ func EncodeString(s string) (string, string) {
 		htmlEncoded = ""
 	}
 
-	return urlEncoded, htmlEncoded
+	if escapedEncoded == s {
+		escapedEncoded = ""
+	}
+
+	return urlEncoded, htmlEncoded, escapedEncoded
+}
+
+// AsciiEscapeUnicode will convert a string into an ASCII escaped format
+//
+// Args:
+//
+//	str (string): String to escape
+//
+// Returns:
+//
+//	escapedRunes (string): Converted runes in string format
+func AsciiEscapeUnicode(str string) string {
+	runes := []rune(str)
+	escapedRunes := make([]rune, 0, len(runes))
+
+	for _, r := range runes {
+		if r > 127 {
+			// The rune is non-ASCII
+			escapedRune := []rune(fmt.Sprintf("\\u%04x", r))
+			escapedRunes = append(escapedRunes, escapedRune...)
+		} else {
+			escapedRunes = append(escapedRunes, r)
+		}
+	}
+	return string(escapedRunes)
 }

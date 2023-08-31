@@ -53,8 +53,7 @@ Rulecat (`cat` rule) performs eleven (11) unique functions:
 - [Toggle Rules](#toggle-rules)
 - [Custom Expressions](#custom-expressions)
 - [Dehex Text](#dehex-text)
-- [URL & HTML Encode Text](#url-&-html-encode-text)
-- [Emoji Text](#emoji-text)
+- [URL, HTML & ASCII Escape Encode Text](#url-html-&-ascii-escape-encode-text)
 
 ### Install
 
@@ -110,7 +109,7 @@ Modes for rulecat (version 1.2.0):
   dehex         Dehexes $HEX[...] input to standard out
                 Example: stdin | rulecat dehex
 
-  encode        URL and HTML encodes input and prints new output
+  encode        URL, HTML, and ASCII escape encodes input and prints new output
                 Example: stdin | rulecat encode
 ```
 
@@ -274,17 +273,20 @@ $ cat test.lst | rulecat dehex
 !!!33:2468
 ```
 
-## URL & HTML Encode Text
-- URL & HTML encodes text from `stdin` to `stdout`
+## URL, HTML & ASCII Escape Encode Text
+- URL, HTML & ASCII escape encodes text from `stdin` to `stdout`
 - Only prints encoded text
 ```
 $ cat test.lst
 <hello World!>
 Testing$!@%!\*()
+its a 😊 day
 
 $ cat test.lst | rulecat encode
 %3Chello+World%21%3E
 &lt;hello World!&gt;
-Testing%24%21%40%25%21%2A%28%29
+Testing%24%21%40%25%21%5C%2A%28%29
+its+a+%F0%9F%98%8A+day
+its a \u1f60a day
 ```
 
