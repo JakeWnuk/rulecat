@@ -12,7 +12,6 @@ import (
 	"hash"
 	"html"
 	"net/url"
-	"regexp"
 	"strconv"
 	"strings"
 )
@@ -112,62 +111,6 @@ func RehashByExpression(stdIn *bufio.Scanner, expression string) {
 		}
 		fmt.Println(input)
 	}
-}
-
-// DehexInput is used to dehex input from $HEX[...] format
-//
-// Args:
-//
-//	stdIn (*bufio.Scanner): Standard in as a buffer
-//
-// Returns:
-//
-//	None
-func DehexInput(stdIn *bufio.Scanner) {
-	for stdIn.Scan() {
-		if TestHexInput(stdIn.Text()) == true {
-			plaintext, err := DehexPlaintext(stdIn.Text())
-			if err != nil {
-				panic("invalid hex input: " + plaintext)
-			}
-			fmt.Println(plaintext)
-		}
-	}
-}
-
-// DehexPlaintext decodes plaintext from $HEX[...] format
-//
-// Args:
-//
-//	s (string): The string to be dehexed
-//
-// Returns:
-//
-//	decoded (string): The decoded hex string
-//	err (error): Error data
-func DehexPlaintext(s string) (string, error) {
-	s = strings.TrimPrefix(s, "$HEX[")
-	s = strings.TrimSuffix(s, "]")
-	decoded, err := hex.DecodeString(s)
-	return string(decoded), err
-}
-
-// TestHexInput is used by the rehashing feature to identify plaintext in the
-// $HEX[...] format
-//
-// Args:
-//
-//	s (str): The string to be evaluated
-//
-// Returns:
-//
-//	(bool): Returns true if it matches and false if it did not
-func TestHexInput(s string) bool {
-	var validateInput = regexp.MustCompile(`^\$HEX\[[a-zA-Z0-9]*\]$`).MatchString
-	if validateInput(s) == false {
-		return false
-	}
-	return true
 }
 
 // EncodeInput URL and HTML encode standard input and prints new instances

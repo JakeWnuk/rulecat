@@ -30,8 +30,6 @@ Rulecat (`cat` rule) performs eleven (11) unique functions:
     - Select offset/starting index for toggles
 - Creates custom text rehashing based on an expression
     - Create a custom expression like `100xmd5(sha1(p))`
-- Creates dehexed text from `stdin`
-    - Only prints dehexed text
 - URL and HTML encodes text from `stdin`
     - Only prints encoded text
 
@@ -52,7 +50,6 @@ Rulecat (`cat` rule) performs eleven (11) unique functions:
 - [Overwrite Rules](#overwrite-rules)
 - [Toggle Rules](#toggle-rules)
 - [Custom Expressions](#custom-expressions)
-- [Dehex Text](#dehex-text)
 - [URL, HTML & ASCII Escape Encode Text](#url-html-&-ascii-escape-encode-text)
 
 ### Install
@@ -257,20 +254,6 @@ $ cat test.tmp | rulecat custom "100xmd5(p)"
 f6a11b053985c4b9ee9eb8d867fd566f
 39840dd1dea35531cd02746bf84c8f6e
 1123d54890652bd74f2adcf104dbd4a3
-```
-
-## Dehex Text
-- Dehexes text from `stdin` to `stdout`
-- Only prints dehexed text
-```
-$ cat test.lst
-$2a$10youkinz
-$HEX[2121212126233033363a68616e64]
-$HEX[21212133333a32343638]
-
-$ cat test.lst | rulecat dehex
-!!!!&#036:hand
-!!!33:2468
 ```
 
 ## URL, HTML & ASCII Escape Encode Text
