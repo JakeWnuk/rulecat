@@ -88,7 +88,7 @@ func printUsage() {
 	fmt.Println("\t\tExample: stdin | rulecat prepend shift")
 	fmt.Println("\n  blank\t\tCreates blank lines from text")
 	fmt.Println("\t\tExample: stdin | rulecat blank")
-	fmt.Println("\n  [RULE-FILE]\tCreate Cartesian product of a file and text")
+	fmt.Println("\n  [RULE-FILE]\tCreate cartesian product of a file and text")
 	fmt.Println("\t\tExample: stdin | rulecat [FILE]")
 	fmt.Println("\n  chars\t\tCreates custom rules per character from text")
 	fmt.Println("\t\tExample: stdin | rulecat chars [RULE]")
