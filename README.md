@@ -40,9 +40,9 @@ Usage information and other documentation can be found below:
 git clone https://github.com/JakeWnuk/rulecat && cd rulecat && go build ./cmd/rulecat && mv ./rulecat ~/go/bin/
 ```
 
-### Current Version 1.2.0:
+### Current Version 1.3.0:
 ```
-Modes for rulecat (version 1.2.0):
+Modes for rulecat (version 1.3.0):
 
   append        Creates append rules from text
                 Example: stdin | rulecat append
