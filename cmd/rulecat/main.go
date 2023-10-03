@@ -65,8 +65,6 @@ func main() {
 		rule.BlankLines(stdIn)
 	case "chars":
 		rule.CharsToRules(stdIn, os.Args[2])
-	case "custom":
-		reform.RehashByExpression(stdIn, os.Args[2])
 	case "encode":
 		reform.EncodeInput(stdIn)
 	default:
@@ -98,9 +96,6 @@ func printUsage() {
 	fmt.Println("\t\tExample: stdin | rulecat overwrite [START-INDEX]")
 	fmt.Println("\n  toggle\tCreates toggle rules from from text")
 	fmt.Println("\t\tExample: stdin | rulecat toggle [START-INDEX]")
-	fmt.Println("\n  custom\tCreates custom text rehashing from an expression")
-	fmt.Println("\t\tExample: stdin | rulecat custom [EXPRESSION]")
-	fmt.Println("\t\tExample: stdin | rulecat custom 2xmd5(sha1(p))")
 	fmt.Println("\n  encode\tURL, HTML, and ASCII escape encodes input and prints new output")
 	fmt.Println("\t\tExample: stdin | rulecat encode")
 }

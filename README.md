@@ -11,7 +11,6 @@ output and features several functions:
 - Creates insert rules from `stdin`
 - Creates overwrite rules from `stdin`
 - Creates toggle rules from `stdin`
-- Creates custom rehashing of text from `stdin`
 - Creates URL, HTML, & ASCII escape encoded text from `stdin`
 
 Rulecat fits into a small tool ecosystem for password cracking and is designed for lightweight and easy usage with its companion tools:
@@ -28,7 +27,7 @@ Usage information and other documentation can be found below:
     - [Append and Prepend Rules](https://github.com/JakeWnuk/rulecat/blob/main/docs/APPEND_AND_PREPEND.md)
     - [Insert and Overwrite Rules](https://github.com/JakeWnuk/rulecat/blob/main/docs/INSERT_AND_OVERWRITE.md)
     - [Toggle and Character to Rules](https://github.com/JakeWnuk/rulecat/blob/main/docs/TOGGLE_AND_CHARACTER.md)
-    - [Cartesian and Custom Hashing Expressions](https://github.com/JakeWnuk/rulecat/blob/main/docs/CARTESIAN_AND_CUSTOM.md)
+    - [Cartesian Product](https://github.com/JakeWnuk/rulecat/blob/main/docs/CARTESIAN.md)
     - [Blank Lines and Encoding Text](https://github.com/JakeWnuk/rulecat/blob/main/docs/BLANK_AND_ENCODING.md)
 
 - For more application examples: 
@@ -71,10 +70,6 @@ Modes for rulecat (version 1.3.0):
 
   toggle        Creates toggle rules from from text
                 Example: stdin | rulecat toggle [START-INDEX]
-
-  custom        Creates custom text rehashing from an expression
-                Example: stdin | rulecat custom [EXPRESSION]
-                Example: stdin | rulecat custom 2xmd5(sha1(p))
 
   encode        URL, HTML, and ASCII escape encodes input and prints new output
                 Example: stdin | rulecat encode

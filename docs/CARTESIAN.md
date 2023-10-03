@@ -28,21 +28,3 @@ Rulecat can be used to create the cartesian product of `stdin` and a provided
 Example: stdin | rulecat [FILE]
 ```
 
-### Creating Custom Hashing Expressions
-Rulecat can be used to create custom hashing expressions of `stdin` based on
-a provided expression. The content from `stdin` is rehashed based on the
-provided expression.
-```
-Example: stdin | rulecat custom [EXPRESSION]
-Example: stdin | rulecat custom 2xmd5(sha1(p))
-```
-
-The `EXPRESSION` will use `(...)` to identify nested hashing algorithms and
-uses the `NxALGO(...)` syntax to to rehash input by the provided `ALGO` `N`
-number of times.
-
-The `custom` option support the following algorithms:
-- `md5`
-- `sha1`
-- `sha256`
-- `sha512`
