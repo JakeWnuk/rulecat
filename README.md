@@ -11,7 +11,7 @@ output and features several functions:
 - Creates insert rules from `stdin`
 - Creates overwrite rules from `stdin`
 - Creates toggle rules from `stdin`
-- Creates URL, HTML, & ASCII escape encoded text from `stdin`
+- Creates URL, HTML, & Unicode escape encoded text from `stdin`
 
 Rulecat fits into a small tool ecosystem for password cracking and is designed for lightweight and easy usage with its companion tools:
 
@@ -71,6 +71,6 @@ Modes for rulecat (version 1.3.0):
   toggle        Creates toggle rules from from text
                 Example: stdin | rulecat toggle [START-INDEX]
 
-  encode        URL, HTML, and ASCII escape encodes input and prints new output
+  encode        URL, HTML, and Unicode escape encodes input and prints new output
                 Example: stdin | rulecat encode
 ```

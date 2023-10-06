@@ -96,6 +96,6 @@ func printUsage() {
 	fmt.Println("\t\tExample: stdin | rulecat overwrite [START-INDEX]")
 	fmt.Println("\n  toggle\tCreates toggle rules from from text")
 	fmt.Println("\t\tExample: stdin | rulecat toggle [START-INDEX]")
-	fmt.Println("\n  encode\tURL, HTML, and ASCII escape encodes input and prints new output")
+	fmt.Println("\n  encode\tURL, HTML, and Unicode escape encodes input and prints new output")
 	fmt.Println("\t\tExample: stdin | rulecat encode")
 }

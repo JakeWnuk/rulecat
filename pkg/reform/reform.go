@@ -47,7 +47,7 @@ func EncodeInput(stdIn *bufio.Scanner) {
 //
 //	urlEncoded (string): Input string URL encoded
 //	htmlEncoded (string): Input string HTML encoded
-//	escapedEncoded (string): Input string ASCII escaped encoded
+//	escapedEncoded (string): Input string unicode escaped encoded
 func EncodeString(s string) (string, string, string) {
 	urlEncoded := url.QueryEscape(s)
 	htmlEncoded := html.EscapeString(s)
@@ -68,7 +68,7 @@ func EncodeString(s string) (string, string, string) {
 	return urlEncoded, htmlEncoded, escapedEncoded
 }
 
-// AsciiEscapeUnicode will convert a string into an ASCII escaped format
+// AsciiEscapeUnicode will convert a string into an unicode escaped format
 //
 // Args:
 //

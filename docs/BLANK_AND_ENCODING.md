@@ -30,7 +30,7 @@ Example: stdin | rulecat blank
 ```
 
 ### Creating Encoded Text
-Rulecat can be used to create URL, HTML, and ASCII escaped text from `stdin`.
+Rulecat can be used to create URL, HTML, and unicode escaped text from `stdin`.
 This will convert input into their escaped equivalents and will only print text
 that has been transformed.
 ```
