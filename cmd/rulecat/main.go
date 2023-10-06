@@ -11,7 +11,7 @@ import (
 	"github.com/jakewnuk/rulecat/pkg/rule"
 )
 
-var version = "1.3.0"
+var version = "1.3.1"
 
 func main() {
 
