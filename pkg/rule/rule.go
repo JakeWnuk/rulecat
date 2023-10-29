@@ -310,7 +310,7 @@ func ComboRules(stdIn *bufio.Scanner, modeA string, modeB string) {
 			resultB += insertReMatch.FindString(insertRule)
 		}
 
-		if resultA != "" && resultB != "" {
+		if len(resultA) > 1 && len(resultB) > 1 {
 			utils.PrintCharacterRuleOutput(resultA + " " + resultB)
 		}
 	}
