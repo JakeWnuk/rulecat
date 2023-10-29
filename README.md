@@ -12,6 +12,7 @@ output and features several functions:
 - Creates overwrite rules from `stdin`
 - Creates toggle rules from `stdin`
 - Creates URL, HTML, & Unicode escape encoded text from `stdin`
+- Creates combinations of multiple modes to create unique rules from `stdin`
 
 Rulecat fits into a small tool ecosystem for password cracking and is designed for lightweight and easy usage with its companion tools:
 
