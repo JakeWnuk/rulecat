@@ -11,7 +11,7 @@ import (
 	"github.com/jakewnuk/rulecat/pkg/rule"
 )
 
-var version = "1.3.1"
+var version = "1.4.0"
 
 func main() {
 
@@ -67,6 +67,13 @@ func main() {
 		rule.CharsToRules(stdIn, os.Args[2])
 	case "encode":
 		reform.EncodeInput(stdIn)
+	case "combo":
+		if len(os.Args) < 4 {
+			fmt.Println("ERROR: Must provide 2 arguments for combo mode (toggle, prepend, append, insert)")
+			os.Exit(0)
+		}
+		rule.ComboRules(stdIn, os.Args[2], os.Args[3])
+
 	default:
 		printUsage()
 		os.Exit(0)
@@ -98,4 +105,6 @@ func printUsage() {
 	fmt.Println("\t\tExample: stdin | rulecat toggle [START-INDEX]")
 	fmt.Println("\n  encode\tURL, HTML, and Unicode escape encodes input and prints new output")
 	fmt.Println("\t\tExample: stdin | rulecat encode")
+	fmt.Println("\n  combo\t\tCombines multiple modes into one rule per line (toggle, prepend, append, insert)")
+	fmt.Println("\t\tExample: stdin | rulecat combo [MODE-A] [MODE-B]")
 }

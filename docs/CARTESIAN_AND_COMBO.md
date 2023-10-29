@@ -13,12 +13,13 @@ $I $s $  $A $1 $2 $3
 $T $e $s $t $1 $2 $3 u
 $T $e $s $t $1 $2 $3 $1 $2 $3
 ```
-Creating custom hashing expressions
+Creating combo rules
 ```
-$ cat test.tmp | rulecat custom "100xmd5(p)"
-f6a11b053985c4b9ee9eb8d867fd566f
-39840dd1dea35531cd02746bf84c8f6e
-1123d54890652bd74f2adcf104dbd4a3
+$ echo 'this-Test123' | rulecat combo toggle insert
+T5 i4-
+
+$ echo 'this-Test123' | rulecat combo prepend append
+^s ^i ^h ^t $- $1 $2 $3
 ```
 
 ### Creating Cartesian Products
@@ -28,3 +29,16 @@ Rulecat can be used to create the cartesian product of `stdin` and a provided
 Example: stdin | rulecat [FILE]
 ```
 
+### Creating Combo Rules
+Rulecat can be used to create combinations of different modes for each item
+from `stdin`. 
+
+The valid mode options for `combo` are:
+    - toggle
+    - prepend
+    - append
+    - insert
+
+```
+Example: stdin | rulecat combo [MODE-A] [MODE-B]
+```

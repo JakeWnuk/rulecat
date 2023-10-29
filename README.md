@@ -26,7 +26,7 @@ Usage information and other documentation can be found below:
     - [Append and Prepend Rules](https://github.com/JakeWnuk/rulecat/blob/main/docs/APPEND_AND_PREPEND.md)
     - [Insert and Overwrite Rules](https://github.com/JakeWnuk/rulecat/blob/main/docs/INSERT_AND_OVERWRITE.md)
     - [Toggle and Character to Rules](https://github.com/JakeWnuk/rulecat/blob/main/docs/TOGGLE_AND_CHARACTER.md)
-    - [Cartesian Product](https://github.com/JakeWnuk/rulecat/blob/main/docs/CARTESIAN.md)
+    - [Cartesian Product and Combo Rules](https://github.com/JakeWnuk/rulecat/blob/main/docs/CARTESIAN_AND_COMBO.md)
     - [Blank Lines and Encoding Text](https://github.com/JakeWnuk/rulecat/blob/main/docs/BLANK_AND_ENCODING.md)
 
 - For more application examples: 
@@ -38,9 +38,9 @@ Usage information and other documentation can be found below:
 git clone https://github.com/JakeWnuk/rulecat && cd rulecat && go build ./cmd/rulecat && mv ./rulecat ~/go/bin/
 ```
 
-### Current Version 1.3.1:
+### Current Version 1.4.0:
 ```
-Modes for rulecat (version 1.3.1):
+Modes for rulecat (version 1.4.0):
 
   append        Creates append rules from text
                 Example: stdin | rulecat append
@@ -72,4 +72,7 @@ Modes for rulecat (version 1.3.1):
 
   encode        URL, HTML, and Unicode escape encodes input and prints new output
                 Example: stdin | rulecat encode
+
+  combo         Combines multiple modes into one rule per line (toggle, prepend, append, insert)
+                Example: stdin | rulecat combo [MODE-A] [MODE-B]
 ```
