@@ -239,45 +239,79 @@ func ComboRules(stdIn *bufio.Scanner, modeA string, modeB string) {
 	insertReMatch := regexp.MustCompile(`i[0-9][!@#\$%\^&\*\(\)_\+\-\=\{\}\[\]\\\|;:'",<\.>\/\?~]`)
 
 	for stdIn.Scan() {
-		result := ""
+		resultA := ""
+		resultB := ""
+
 		switch modeA {
 		case "toggle":
-			result += utils.StringToToggle(stdIn.Text(), "T", 0)
+			resultA += utils.StringToToggle(stdIn.Text(), "T", 0)
 		case "prepend":
 			if preReMatch1.MatchString(stdIn.Text()) {
 				prefixEntry = preReParse1.FindString(stdIn.Text())
-				result += utils.CharToRule(utils.ReverseString(prefixEntry), "^")
+
+				if modeB == "toggle" {
+					prefixEntry = strings.ToLower(prefixEntry)
+				}
+
+				resultA += utils.CharToRule(utils.ReverseString(prefixEntry), "^")
 			} else if preReMatch2.MatchString(stdIn.Text()) {
 				prefixEntry = preReParse2.FindString(stdIn.Text())
-				result += utils.CharToRule(utils.ReverseString(prefixEntry), "^")
+
+				if modeB == "toggle" {
+					prefixEntry = strings.ToLower(prefixEntry)
+				}
+
+				resultA += utils.CharToRule(utils.ReverseString(prefixEntry), "^")
 			}
 		case "append":
 			nonAlphaEntry := appReRemove.ReplaceAllString(stdIn.Text(), "")
-			result += utils.CharToRule(nonAlphaEntry, "$")
+
+			if modeB == "toggle" {
+				nonAlphaEntry = strings.ToLower(nonAlphaEntry)
+			}
+
+			resultA += utils.CharToRule(nonAlphaEntry, "$")
 		case "insert":
 			insertRule := utils.CharToIteratingRule(stdIn.Text(), "i", 0)
-			result += insertReMatch.FindString(insertRule)
+			resultA += insertReMatch.FindString(insertRule)
 		}
 
-		result += " "
 		switch modeB {
 		case "toggle":
-			result += utils.StringToToggle(stdIn.Text(), "T", 0)
+			resultB += utils.StringToToggle(stdIn.Text(), "T", 0)
 		case "prepend":
 			if preReMatch1.MatchString(stdIn.Text()) {
 				prefixEntry = preReParse1.FindString(stdIn.Text())
-				result += utils.CharToRule(utils.ReverseString(prefixEntry), "^")
+
+				if modeA == "toggle" {
+					prefixEntry = strings.ToLower(prefixEntry)
+				}
+
+				resultB += utils.CharToRule(utils.ReverseString(prefixEntry), "^")
 			} else if preReMatch2.MatchString(stdIn.Text()) {
 				prefixEntry = preReParse2.FindString(stdIn.Text())
-				result += utils.CharToRule(utils.ReverseString(prefixEntry), "^")
+
+				if modeA == "toggle" {
+					prefixEntry = strings.ToLower(prefixEntry)
+				}
+
+				resultB += utils.CharToRule(utils.ReverseString(prefixEntry), "^")
 			}
 		case "append":
 			nonAlphaEntry := appReRemove.ReplaceAllString(stdIn.Text(), "")
-			result += utils.CharToRule(nonAlphaEntry, "$")
+
+			if modeA == "toggle" {
+				nonAlphaEntry = strings.ToLower(nonAlphaEntry)
+			}
+
+			resultB += utils.CharToRule(nonAlphaEntry, "$")
 		case "insert":
 			insertRule := utils.CharToIteratingRule(stdIn.Text(), "i", 0)
-			result += insertReMatch.FindString(insertRule)
+			resultB += insertReMatch.FindString(insertRule)
 		}
-		utils.PrintCharacterRuleOutput(result)
+
+		if resultA != "" && resultB != "" {
+			utils.PrintCharacterRuleOutput(resultA + " " + resultB)
+		}
 	}
 }
