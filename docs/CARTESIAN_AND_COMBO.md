@@ -42,3 +42,21 @@ The valid mode options for `combo` are:
 ```
 Example: stdin | rulecat combo [MODE-A] [MODE-B]
 ```
+
+Additonal parsing steps are added for the `combo` mode that will alter the
+output. The code for this can be found in `pkg/rule/rule.go` in `func
+ComboRules()`.
+```
+// Regexes for prepend mode to find camel case
+var prefixEntry string
+preReMatch1 := regexp.MustCompile(`[A-Z].*[A-Z]`)
+preReParse1 := regexp.MustCompile(`^([A-Z][a-z]+)`)
+preReMatch2 := regexp.MustCompile(`[a-z].*[A-Z]`)
+preReParse2 := regexp.MustCompile(`^([a-z][a-z]+)`)
+
+// Regex for append mode to remove alpha characters
+appReRemove := regexp.MustCompile(`[a-zA-Z]`)
+
+// Regex for insert mode to find i[0-9]<SPECIAL CHARACTER> rules
+insertReMatch := regexp.MustCompile(`i[0-9][!@#\$%\^&\*\(\)_\+\-\=\{\}\[\]\\\|;:'",<\.>\/\?~]`)
+```
