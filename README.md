@@ -34,14 +34,19 @@ Usage information and other documentation can be found below:
     - [Rulecat Examples](https://jakewnuk.com/posts/brewing-hash-cracking-resources-w-the-twin-cats/) (external link)
     - [Rulecat Usages](https://jakewnuk.com/posts/how-to-use-rulecat-to-crack-the-perfect-eggs-every-time/) (external link)
 
-### Install from Source
+### Install from Go
 ```
-git clone https://github.com/JakeWnuk/rulecat && cd rulecat && go build ./cmd/rulecat && mv ./rulecat ~/go/bin/
+go install github.com/jakewnuk/rulecat@v0.0.1
 ```
 
-### Current Version 1.4.0:
+### Install from Source
 ```
-Modes for rulecat (version 1.4.0):
+git clone https://github.com/JakeWnuk/rulecat && cd rulecat && go build ./main.go && mv ./main ~/go/bin/rulecat
+```
+
+### Current Version 0.0.1:
+```
+Modes for rulecat (version 0.0.1):
 
   append        Creates append rules from text
                 Example: stdin | rulecat append
