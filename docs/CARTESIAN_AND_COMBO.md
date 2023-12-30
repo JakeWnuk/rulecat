@@ -34,10 +34,10 @@ Rulecat can be used to create combinations of different modes for each item
 from `stdin`. 
 
 The valid mode options for `combo` are:
-    - toggle
-    - prepend
-    - append
-    - insert
+- toggle
+- prepend
+- append
+- insert
 
 ```
 Example: stdin | rulecat combo [MODE-A] [MODE-B]
