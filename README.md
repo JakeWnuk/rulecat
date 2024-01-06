@@ -32,7 +32,7 @@ Usage information and other documentation can be found below:
 
 - For more application examples: 
     - [Rulecat Examples](https://jakewnuk.com/posts/brewing-hash-cracking-resources-w-the-twin-cats/) (external link)
-    - [Rulecat Usages](https://jakewnuk.com/posts/how-to-use-rulecat-to-crack-the-perfect-eggs-every-time/) (external link)
+    - [Rulecat Usages](https://jakewnuk.com/posts/how-to-use-rulecat-to-crack-perfect-eggs-every-time/) (external link)
 
 ### Install from Go
 ```
