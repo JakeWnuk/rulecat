@@ -1,4 +1,5 @@
 ### Quick Start
+
 Create append rules
 ```
 $ cat test.tmp | rulecat append
@@ -13,6 +14,8 @@ $ cat test.tmp | rulecat prepend
 ^A ^  ^s ^I
 ^3 ^2 ^1 ^t ^s ^e ^T
 ```
+>[!TIP]
+>`Append` and `Prepend` modes support multibyte text.
 
 ### Creating Append Rules
 Rulecat can be used to create append rules from `stdin`. This will convert
