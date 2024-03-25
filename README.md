@@ -36,7 +36,7 @@ Usage information and other documentation can be found below:
 
 ### Install from Go
 ```
-go install github.com/jakewnuk/rulecat@v0.0.1
+go install github.com/jakewnuk/rulecat@v0.0.2
 ```
 
 ### Install from Source
@@ -44,9 +44,9 @@ go install github.com/jakewnuk/rulecat@v0.0.1
 git clone https://github.com/JakeWnuk/rulecat && cd rulecat && go build ./main.go && mv ./main ~/go/bin/rulecat
 ```
 
-### Current Version 0.0.1:
+### Current Version 0.0.2:
 ```
-Modes for rulecat (version 0.0.1):
+Modes for rulecat (version 0.0.2):
 
   append        Creates append rules from text
                 Example: stdin | rulecat append

@@ -10,7 +10,7 @@ import (
 	"github.com/jakewnuk/rulecat/pkg/rule"
 )
 
-var version = "0.0.1"
+var version = "0.0.2"
 
 func main() {
 
