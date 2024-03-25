@@ -32,7 +32,6 @@ Usage information and other documentation can be found below:
     - [Blank Lines and Encoding Text](https://github.com/JakeWnuk/rulecat/blob/main/docs/BLANK_AND_ENCODING.md)
 
 - For more application examples: 
-    - [Rulecat Examples](https://jakewnuk.com/posts/brewing-hash-cracking-resources-w-the-twin-cats/) (external link)
     - [Rulecat Usages](https://jakewnuk.com/posts/how-to-use-rulecat-to-crack-perfect-eggs-every-time/) (external link)
 
 ### Install from Go
