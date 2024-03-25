@@ -8,5 +8,5 @@ retract (
 	v1.3.0
 	v1.2.0
 	v1.0.1
-	v1.0.0 // Reset versioning for future support
+	v1.0.0
 )
