@@ -18,6 +18,7 @@ Rulecat fits into a small tool ecosystem for password cracking and is designed f
 
 - [maskcat](https://github.com/JakeWnuk/maskcat)
 - [rulecat](https://github.com/JakeWnuk/rulecat)
+- [mode](https://github.com/JakeWnuk/mode)
 
 ### Getting Started
 
