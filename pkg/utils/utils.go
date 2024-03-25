@@ -138,7 +138,10 @@ func PrintCharacterRuleOutput(strs ...string) {
 			output += ConvertCharacterMultiByteString(str)
 		}
 	}
-	fmt.Println(strings.TrimSpace(output))
+
+	if output != "" && len(output) <= 93 {
+		fmt.Println(strings.TrimSpace(output))
+	}
 }
 
 // ConvertCharacterMultiByteString converts non-ascii characters to a hashcat valid format

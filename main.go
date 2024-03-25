@@ -4,7 +4,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io/ioutil"
 	"os"
 
 	"github.com/jakewnuk/rulecat/pkg/reform"
@@ -24,7 +23,7 @@ func main() {
 
 	_, err := os.Stat(os.Args[1])
 	if err == nil {
-		file, err := ioutil.ReadFile(os.Args[1])
+		file, err := os.ReadFile(os.Args[1])
 		if err != nil {
 			fmt.Printf("ERROR: %s\n", err)
 			os.Exit(1)
